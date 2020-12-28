@@ -13,13 +13,17 @@ public class ProjectDTO {
 	private double budget;
 	private Date start_date;
 	private Date end_date;
+	private Date est_end_date;
+
 	private ArrayList<EmployeeDTO> empList;
 
+	
 	public ProjectDTO() {
 		super();
 	}
 
-	public ProjectDTO(long id, String name, String description, double budget, Date start_date, Date end_date) {
+	public ProjectDTO(long id, String name, String description, double budget, Date start_date, Date end_date,
+			Date est_end_date, ArrayList<EmployeeDTO> empList) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,6 +31,8 @@ public class ProjectDTO {
 		this.budget = budget;
 		this.start_date = start_date;
 		this.end_date = end_date;
+		this.est_end_date = est_end_date;
+		this.empList = empList;
 	}
 
 	public long getId() {
@@ -77,6 +83,14 @@ public class ProjectDTO {
 		this.end_date = end_date;
 	}
 
+	public Date getEst_end_date() {
+		return est_end_date;
+	}
+
+	public void setEst_end_date(Date est_end_date) {
+		this.est_end_date = est_end_date;
+	}
+
 	public ArrayList<EmployeeDTO> getEmpList() {
 		return empList;
 	}
@@ -84,12 +98,14 @@ public class ProjectDTO {
 	public void setEmpList(ArrayList<EmployeeDTO> empList) {
 		this.empList = empList;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ProjectDTO [id=" + id + ", name=" + name + ", description=" + description + ", budget=" + budget
-				+ ", start_date=" + start_date + ", end_date=" + end_date + "]";
+				+ ", start_date=" + start_date + ", end_date=" + end_date + ", est_end_date=" + est_end_date
+				+ ", empList=" + empList + "]";
 	}
+
 	
 	
 

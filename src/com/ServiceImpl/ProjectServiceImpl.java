@@ -1,82 +1,72 @@
 package com.ServiceImpl;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.DAOImpl.DepartmentDAOImpl;
+import com.DAOImpl.ProjectDAOImpl;
 import com.DTO.DepartmentDTO;
+import com.DTO.ProjectDTO;
 import com.Service.CRUDService;
 
-public class DepartmenServiceImpl implements CRUDService<DepartmentDTO>{
+public class ProjectServiceImpl implements CRUDService<ProjectDTO>{
 
-	DepartmentDAOImpl departmentDAOImpl;
-	private static Logger logger = Logger.getLogger(EmployeeServiceImpl.class.getName());
+	ProjectDAOImpl projectDAOImpl;
+	private static Logger logger = Logger.getLogger(ProjectServiceImpl.class.getName());
 
-	public DepartmenServiceImpl() throws SQLException {
+	public ProjectServiceImpl() throws SQLException {
 		
-		
-		departmentDAOImpl = new DepartmentDAOImpl();
+		projectDAOImpl = new ProjectDAOImpl();
 		
 	}
-	
+
 	@Override
-	public DepartmentDTO save(DepartmentDTO dto) {
-		
+	public ProjectDTO save(ProjectDTO dto) {
 		try {
-			return this.departmentDAOImpl.save(dto);
+			return this.projectDAOImpl.save(dto);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING,e.getMessage());
 			return null;
 		}
-		
 	}
 
 	@Override
-	public DepartmentDTO update(DepartmentDTO dto) {
-		
+	public ProjectDTO update(ProjectDTO dto) {
 		try {
-			return this.departmentDAOImpl.update(dto);
+			return this.projectDAOImpl.update(dto);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING,e.getMessage());
 			return null;
 		}
-		
 	}
 
 	@Override
-	public List<DepartmentDTO> retrieveAll() {
+	public List<ProjectDTO> retrieveAll() {
 		
 		try {
-			return this.departmentDAOImpl.retrieveAll();
-			
+			return this.projectDAOImpl.retrieveAll();
 		} catch (SQLException e) {
 			logger.log(Level.WARNING,e.getMessage());
 			return null;
 		}
-		
 	}
 
 	@Override
-	public boolean remove(DepartmentDTO dto) {
-		
+	public boolean remove(ProjectDTO dto) {
 		try {
-			return this.departmentDAOImpl.remove(dto);
-			
+			return this.projectDAOImpl.remove(dto);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING,e.getMessage());
 			return false;
 		}
-		
 	}
 
 	@Override
-	public DepartmentDTO getUsingID(long id) {
+	public ProjectDTO getUsingID(long id) {
 		try {
-			return this.departmentDAOImpl.retrieveById(id);
-			
+			return this.projectDAOImpl.retrieveById(id);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING,e.getMessage());
 			return null;
@@ -84,19 +74,12 @@ public class DepartmenServiceImpl implements CRUDService<DepartmentDTO>{
 	}
 
 	@Override
-	public DepartmentDTO retrieveByName(String name) {
+	public ProjectDTO retrieveByName(String name) {
 		try {
-			return this.departmentDAOImpl.retrieveByName(name);
-			
+			return this.projectDAOImpl.retrieveByName(name);
 		} catch (SQLException e) {
 			logger.log(Level.WARNING,e.getMessage());
 			return null;
 		}
-		
 	}
-	
-	
-	
-	
-
 }

@@ -37,7 +37,6 @@ public class DepartmentController {
 		
 		 String line = null;
 		 BufferedReader br = null;
-		 System.out.print("Values from a csv file, file name : ");
 		 String [] headers;
 		 ArrayList<String> values = new ArrayList<String>();
 		 ArrayList<ArrayList<String>> linesValues = new ArrayList<ArrayList<String>>();
@@ -45,9 +44,12 @@ public class DepartmentController {
 		 EmployeeDTO e_dto = new EmployeeDTO();
 		 boolean result = false;
 		 int number = 0;
+		 
+		 System.out.print("Values from a csv file, file name : ");
+
 		 line = input.nextLine();
 		 
-		 if(line!=null) {
+		 if(line!=null && line.length()>0) {
 			 
 			 File file = new File(line);
 			 
@@ -78,31 +80,65 @@ public class DepartmentController {
 		 }
 		 else {
 			 System.out.println("Enter data from console | Exit (quit)");
-			 line = "";
+			 line = " ";
 			 while(!(line.equals("quit"))){
-				 System.out.print("Department name : ");
-				 line = input.nextLine();
-				 if(line == null || line.equals(" ")) {
-					 System.out.println("Please enter a value");
-					 continue;
-				 }
-				 d_dto.setName(line);
-				 System.out.print("Department Manager : ");
-				 line = input.nextLine();
-				 if(line != null && (!line.equals(" "))) {
-					 e_dto = empService.retrieveByName(line);
-					 d_dto.setManager(e_dto);
+				 line = " ";
+
+				 while(line != null && line.equals(" ") && !(line.equals("quit"))) {
+					 System.out.print("Department name : ");
+
+					 line = input.nextLine();
+
+					 if(line == null || line.equals(" ")) {
+						 System.out.println("Please enter a value");
+
+					 }
+					 else{
+						 d_dto.setName(line);
+					 }
 				 }
 				
-				 System.out.print("Department location : ");
-				 line = input.nextLine();
-				 if(line == null || line.equals(" ")) {
-					 System.out.println("Please enter a value");
-					 continue;
+				 line = " ";
+				 while(line != null && (line.equals(" ")) && !(line.equals("quit"))) {
+					 System.out.print("\nDepartment Manager : ");
+
+					 line = input.nextLine();
+
+					 if(line == null || line.equals(" ")) {
+						 System.out.println("Please enter a value");
+
+					 }
+					 else {
+						 e_dto = empService.retrieveByName(line);
+						 d_dto.setManager(e_dto);
+
+					 }
 				 }
-				 d_dto.setLocation(line);
-				 ;
+
+				 line = " ";
+				
+				 while(line != null && line.equals(" ") && !(line.equals("quit"))) {
+					 System.out.print("\nDepartment location : ");
+
+					 line = input.nextLine();
+					 if(line == null || line.equals(" ")) {
+						 System.out.println("Please enter a value");
+
+					 }			
+					 else {
+						 d_dto.setLocation(line);
+					 }
+				 }
+
 				 result = (departmentService.save(d_dto)!=null?true:false);
+				 System.out.print("Want to quit(y/n)");
+				 line = input.nextLine();
+				 if(line!=null) {
+					 if(line.equalsIgnoreCase("y")) {
+						 break;
+					 }
+				 }
+				 
 			 }
 					 
 
