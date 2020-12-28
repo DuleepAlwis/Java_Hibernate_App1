@@ -9,12 +9,13 @@ import java.util.logging.Logger;
 
 public class DBConnect {
 
-	private static String URL = "jdbc:mysql://localhost:3306/test_3";
-	private static String USER_NAME = "user1";
-	private static String PASSWORD = "password";
+	private static String URL = "jdbc:mysql://localhost:3306/company";
+	private static String USER_NAME = "root";
+	private static String PASSWORD = "root";
 	
 	private static Connection con = null;
 	private static Logger logger = Logger.getLogger(DBConnect.class.getName());
+	private static DBConnect dbconnect = null;
 
 	private DBConnect() {
 		
@@ -22,7 +23,10 @@ public class DBConnect {
 	
 	public static DBConnect getInstance() {
 		
-		return new DBConnect();
+		if(dbconnect==null) {
+			dbconnect = new DBConnect();
+		}
+		return dbconnect;
 	}
 	
 	public Connection getConnection() {
@@ -31,6 +35,7 @@ public class DBConnect {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+			System.out.println(con.toString());
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			
