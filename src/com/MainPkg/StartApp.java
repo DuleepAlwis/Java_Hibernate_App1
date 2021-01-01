@@ -1,4 +1,4 @@
-package MainPkg;
+package com.MainPkg;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -57,6 +57,8 @@ public class StartApp {
 						case 1:departmentController.save(input);break;
 
 						case 3:departmentController.save(input);break;
+						case 9:departmentController.getAll();;break;
+
 					}
 				}
 				else {

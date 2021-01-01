@@ -158,7 +158,7 @@ public class DepartmentDAOImpl implements CRUDDAO<DepartmentDTO> {
 
 		con = DBConnect.getInstance().getConnection();
 		con.setAutoCommit(false);
-		String sql = "select department.id,department.name,department.location,employee.id,employee.name from department,employee where employee.id = department.id;";
+		String sql = "select department.id,department.name,department.location,employee.id,employee.name from department,employee where employee.id = department.manager;";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		DepartmentDTO result = null;
@@ -171,11 +171,12 @@ public class DepartmentDAOImpl implements CRUDDAO<DepartmentDTO> {
 			rs = ps.executeQuery();
 			if (rs != null) {
 				while (rs.next()) {
-					result.setId(rs.getInt(1));
+					result = new DepartmentDTO();
+					result.setId(rs.getLong(1));
 					result.setName(rs.getString(2));
 					result.setLocation(rs.getString(3));
 					emp = new EmployeeDTO();
-					emp.setId(rs.getInt(4));
+					emp.setId(rs.getLong(4));
 					emp.setName(rs.getString(5));
 					result.setManager(emp);
 					arrList.add(result);

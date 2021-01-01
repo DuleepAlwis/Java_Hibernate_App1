@@ -36,7 +36,7 @@ public class EmployeeDAOImpl implements CRUDDAO<EmployeeDTO> {
 	@Override
 	public EmployeeDTO save(EmployeeDTO dto) throws SQLException {
 		
-		con = DBConnect.getInstance().getConnection();
+		con = DBConnect.getInstance().getConnection(); 
 		con.setAutoCommit(false);
 		
 		long id = 1;

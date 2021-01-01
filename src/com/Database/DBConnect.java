@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.Constants.Properties;
+
 public class DBConnect {
 
-	private static String URL = "jdbc:mysql://localhost:3306/company";
-	private static String USER_NAME = "root";
-	private static String PASSWORD = "root";
+	private static String URL = Properties.DBConstatns.DB_URL;
+	private static String USER_NAME = Properties.DBConstatns.USER_NAME;
+	private static String PASSWORD = Properties.DBConstatns.PASSWORD;
 	
 	private static Connection con = null;
 	private static Logger logger = Logger.getLogger(DBConnect.class.getName());

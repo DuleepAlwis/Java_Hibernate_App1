@@ -2,15 +2,12 @@ package com.Controller;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,7 +133,7 @@ public class DepartmentController {
 				 if(line!=null) {
 					 if(line.equalsIgnoreCase("y")) {
 						 break;
-					 }
+					 } 
 				 }
 				 
 			 }
@@ -146,6 +143,23 @@ public class DepartmentController {
 		 }
 		 
 		 return result;
+	}
+	
+	public static boolean update() {
+		return false;
+	}
+	
+	public static void getAll() {
+		
+		System.out.println("====================================================================================");
+		List<DepartmentDTO> departments = departmentService.retrieveAll();
+		System.out.println("\t\t\tDept. ID\t"+"|   Dept. name\t\t"+"|   Location\t\t"+"|   Manager ID\t"+"|   Manager name");
+		
+		departments.forEach(i->{
+			System.out.println("\t\t\t "+i.getId()+"\t\t\t"+i.getName()+"\t\t"+i.getLocation()+"\t\t"+i.getManager().getId()+"\t\t"+i.getManager().getName());
+		});
+		
+		
 	}
 }
 
