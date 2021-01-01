@@ -49,7 +49,7 @@ public class EmployeeController {
 				line = input.nextLine();
 			}
 			
-			empDTO.setJoin_date(line);
+			//empDTO.setJoin_date(line);
 			line = "";
 			
 			while(line==null || line.equals("")) {
@@ -77,10 +77,11 @@ public class EmployeeController {
 			}
 
 		}
+		return true;
 		
 	}
 	
 	public boolean save(String fileName) {
-		
+		return true;
 	}
 }

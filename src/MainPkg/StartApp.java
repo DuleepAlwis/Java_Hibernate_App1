@@ -20,9 +20,9 @@ public class StartApp {
 	
 	public static void Start() {
 		
-		System.out.println("================================================================");
-		System.out.println("---ABC COMPANY---");
-		System.out.println("=================================================================");
+		System.out.println("=================================================================================");
+		System.out.println("\t\t\t---Programme Starts---");
+		System.out.println("=================================================================================");
 		boolean quit = false;
 		
 		try {
@@ -33,20 +33,20 @@ public class StartApp {
 			
 			Scanner input = new Scanner(System.in);
 			
-			System.out.println("Add a new employee option 1");
-			System.out.println("Add a new project 2");
-			System.out.println("Add a new department 3");
-			System.out.println("Update an existing employee 4");
-			System.out.println("Update an existing project 5");
-			System.out.println("Update an existing department 6");
-			System.out.println("Get all employees 7");
-			System.out.println("Get all projects 8");
-			System.out.println("Get all departments 9");
-			System.out.println("Quit(Type quit)");
+			System.out.println("\t\t\tAdd a new employee option 1");
+			System.out.println("\t\t\tAdd a new project 2");
+			System.out.println("\t\t\tAdd a new department 3");
+			System.out.println("\t\t\tUpdate an existing employee 4");
+			System.out.println("\t\t\tUpdate an existing project 5");
+			System.out.println("\t\t\tUpdate an existing department 6");
+			System.out.println("\t\t\tGet all employees 7");
+			System.out.println("\t\t\tGet all projects 8");
+			System.out.println("\t\t\tGet all departments 9");
+			System.out.println("\t\t\tQuit(Type quit)");
 
 			while(!quit) {
 				
-				System.out.print("Your option: ");
+				System.out.print("\t\t\tYour option: ");
 
 				
 				line = input.nextLine();
@@ -54,6 +54,8 @@ public class StartApp {
 					int option = Integer.parseInt(line);
 					
 					switch(option) {
+						case 1:departmentController.save(input);break;
+
 						case 3:departmentController.save(input);break;
 					}
 				}
@@ -63,6 +65,7 @@ public class StartApp {
 					System.gc();
 
 					System.exit(1);
+					
 				}
 
 				
